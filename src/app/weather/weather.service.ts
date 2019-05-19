@@ -1,9 +1,52 @@
 import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http'; //automatically added
+import { environment } from 'src/environments/environment';
+import { ICurrentWeather } from '../icurrent-weather';
+import {map} from 'rxjs/operators';
+
+
+// https://samples.openweathermap.org/data/2.5/weather?q=London,uk&appid=b6907d289e10d714a6e88b30761fae22
+interface ICurrentWeatherData {
+  weather: [{  // only want description and weather from an array
+    description: string,
+    icon: string
+  }],
+  main: {
+    temp: number
+  },
+  sys: {
+    country: string
+  },
+  dt: number,
+  name: string
+}
 
 @Injectable({
   providedIn: 'root'
 })
 export class WeatherService {
 
-  constructor() { }
+  constructor(private httpClient: HttpClient) 
+  { }
+
+  // create a function
+  getCurrentWeather(city: string, country: string) { // name of my function(2 parameters)
+    // go get me the data (<-> post = submitting data)
+    return this.httpClient.get<ICurrentWeatherData>(
+      `${environment.baseUrl}api.openweathermap.org/data/2.5/weather?q=${city},${country}&appid=${environment.appID}`
+    ).pipe(map(data => this.transformToICurrentWeather(data)))  //pipe method
+  }
+
+  // create another function 
+  private transformToICurrentWeather(data: ICurrentWeatherData) : ICurrentWeather {
+    return {
+      city: data.name,
+      country: data.sys.country,
+      date: data.dt * 1000,  // this data is milisec (that's why 1000)
+      //only want the first weather(current weather)
+      image: `http://openweathermap.org/img/w/${data.weather[0].icon}.png`,
+      temperature: data.main.temp,
+      description: data.weather[0].description
+    }
+  }
 }
