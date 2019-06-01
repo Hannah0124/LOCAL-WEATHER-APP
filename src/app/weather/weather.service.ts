@@ -29,11 +29,25 @@ export class WeatherService {
   constructor(private httpClient: HttpClient) 
   { }
 
-  // create a function
-  getCurrentWeather(city: string, country: string) { // name of my function(2 parameters)
+  // create a function:  name of my function(2 parameters)
+  // this function returns <ICurrentWeatherData> back
+  getCurrentWeather(search: string | number, country?: string) { 
+    let uriParams = ''
+    // if type is string, it is city. Otherwise(number), zipe code.
+    if (typeof search === 'string') {
+      uriParams = `q=${search}`
+    } else {
+      uriParams = `zip=${search}`
+    }
+
+    if (country) {
+      uriParams = `${uriParams},${country}`
+    }
+   
+   
     // go get me the data (<-> post = submitting data)
     return this.httpClient.get<ICurrentWeatherData>(
-      `${environment.baseUrl}api.openweathermap.org/data/2.5/weather?q=${city},${country}&appid=${environment.appID}`
+      `${environment.baseUrl}api.openweathermap.org/data/2.5/weather?${uriParams}&appid=${environment.appId}`
     ).pipe(map(data => this.transformToICurrentWeather(data)))  //pipe method
   }
 
