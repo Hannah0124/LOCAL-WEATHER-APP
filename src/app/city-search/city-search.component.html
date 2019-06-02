@@ -5,5 +5,10 @@
     <!-- matInput: I want to add stylesheet input. -->
     <!-- [formControl]: property binding -->
     <input matInput placeholder="Enter city or zip" arial-label="City or Zip" [formControl]="search"/>
+    <mat-hint>Specify country code like 'Paris, US'</mat-hint>
+    <!-- Only if the search is invalid, we will go to the next. -->
+    <mat-error *ngIf="search.invalid">
+      {{getErrorMessage()}}
+    </mat-error>
   </mat-form-field>
 </form>  
