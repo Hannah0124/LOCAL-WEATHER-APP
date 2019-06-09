@@ -33,7 +33,7 @@ export class WeatherService {
   // this function returns <ICurrentWeatherData> back
   getCurrentWeather(search: string | number, country?: string) { 
     let uriParams = ''
-    // if type is string, it is city. Otherwise(number), zipe code.
+    // if type is string, it is city. Otherwise(number), it is zipe code.
     if (typeof search === 'string') {
       uriParams = `q=${search}`
     } else {

@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { ICurrentWeather } from '../icurrent-weather';
-import { WeatherService } from '../weather/weather.service';
+// import { WeatherService } from '../weather/weather.service'; // => delete
 
 @Component({   // 3 files are connected here
   selector: 'app-current-weather',

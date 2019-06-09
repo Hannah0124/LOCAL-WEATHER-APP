@@ -15,7 +15,7 @@ import { CitySearchComponent } from './city-search/city-search.component';
   declarations: [
     AppComponent,
     CurrentWeatherComponent,
-    CitySearchComponent
+    CitySearchComponent 
   ],
   imports: [
     BrowserModule,

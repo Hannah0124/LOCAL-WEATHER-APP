@@ -15,8 +15,7 @@ export class CitySearchComponent implements OnInit {
   @Output() searchEvent = new EventEmitter<string>();
 
 
-
-  // Search is form control
+  // search is form control. (an instance of the form control)
   search = new FormControl('', [Validators.minLength(3)]) // Form Control & Validators: auto import
 
   constructor(private weatherService: WeatherService) { } // auto import
