@@ -18,8 +18,10 @@ export class CitySearchComponent implements OnInit {
   // search is form control. (an instance of the form control)
   search = new FormControl('', [Validators.minLength(3)]) // Form Control & Validators: auto import
 
-  constructor(private weatherService: WeatherService) { } // auto import
+  // constructor(private weatherService: WeatherService) { } // auto import
 
+  // We removed the constructor's parameter during Day 7 lecture.
+  constructor() { } 
   ngOnInit() {
     // valueChanges: listening on the changes, 
     // subscribe: continously listening(publish subscribe model)

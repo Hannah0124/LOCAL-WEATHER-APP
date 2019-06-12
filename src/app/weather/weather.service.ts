@@ -3,7 +3,13 @@ import { HttpClient } from '@angular/common/http'; //automatically added
 import { environment } from 'src/environments/environment';
 import { ICurrentWeather } from '../icurrent-weather';
 import {map} from 'rxjs/operators';
+import { Observable } from 'rxjs';
 
+export interface IWeatherService {
+  // Return needs to be <Observable> - Observable: auto import
+  getCurrentWeather(search: string | number, country?: string): Observable<ICurrentWeather> 
+
+}
 
 // https://samples.openweathermap.org/data/2.5/weather?q=London,uk&appid=b6907d289e10d714a6e88b30761fae22
 interface ICurrentWeatherData {
@@ -24,7 +30,7 @@ interface ICurrentWeatherData {
 @Injectable({
   providedIn: 'root'
 })
-export class WeatherService {
+export class WeatherService implements IWeatherService {
 
   constructor(private httpClient: HttpClient) 
   { }

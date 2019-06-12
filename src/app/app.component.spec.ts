@@ -8,8 +8,7 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { WeatherService } from './weather/weather.service'; 
 import {HttpClientTestingModule} from '@angular/common/http/testing';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'; // add manually
-
-
+import { WeatherServiceFake } from './weather/weather.service.fake'; 
 
 
 describe('AppComponent', () => {
@@ -32,8 +31,8 @@ describe('AppComponent', () => {
         AppComponent,
         CurrentWeatherComponent,
         CitySearchComponent
-      ],
-      providers: [WeatherService], // provider is a service.
+      ], 
+      providers: [{provide: WeatherService, useClass: WeatherServiceFake}], // provider is a service.
     }).compileComponents();
   }));
 
@@ -44,8 +43,11 @@ describe('AppComponent', () => {
   });
 
   it(`should have as title 'local-weather-app'`, () => {
+    // Create an app component.
     const fixture = TestBed.createComponent(AppComponent);
+    // Find the instance of the component on the fixture.
     const app = fixture.debugElement.componentInstance;
+    // Then, this is checking on the title, <local-weather-app>
     expect(app.title).toEqual('local-weather-app');
   });
 

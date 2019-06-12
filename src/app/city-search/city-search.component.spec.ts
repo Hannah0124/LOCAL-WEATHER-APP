@@ -16,17 +16,17 @@ describe('CitySearchComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports: [
-        MatIconModule,
+        BrowserAnimationsModule,
         FormsModule,
         ReactiveFormsModule,
-        BrowserAnimationsModule,
         HttpClientTestingModule,
         RouterTestingModule,
         MatFormFieldModule,
         MatInputModule,
         MatButtonModule,
         MatToolbarModule,
-        MatCardModule
+        MatIconModule,
+        MatCardModule,
       ],
       declarations: [ CitySearchComponent ]
     })
