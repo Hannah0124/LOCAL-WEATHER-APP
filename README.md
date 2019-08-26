@@ -16,8 +16,6 @@ These instructions will get you a copy of the project up and running on your loc
 
 ### How to install
 
-What things you need to install the software and how to install them
-
 ```
 npm install
 ```
@@ -35,7 +33,7 @@ npm start
 Browser: http://localhost:5200/
 ```
 
-## Running unit tests
+### How to run unit test
 
 ```
 npm test
