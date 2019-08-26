@@ -16,7 +16,7 @@ export class WeatherServiceFake implements IWeatherService {
 
   public getCurrentWeather(search: string | number, country?: string) {
     // Not calling API at this time.
-    // of: observce??
+    // of: observable
     return of(this.fakeWeather);
   }
 }

@@ -63,7 +63,7 @@ export class WeatherService implements IWeatherService {
       city: data.name,
       country: data.sys.country,
       date: data.dt * 1000,  // this data is milisec (that's why 1000)
-      //only want the first weather(current weather)
+      // only want the first weather (current weather)
       image: `http://openweathermap.org/img/w/${data.weather[0].icon}.png`,
       temperature: data.main.temp,
       description: data.weather[0].description

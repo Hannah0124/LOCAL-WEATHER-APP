@@ -1,15 +1,20 @@
 <div *ngIf="current">
   <div>
-    <span>{{current.city}}, {{current.country}} </span>
+    <div>{{current.city}}, {{current.country}} </div>
+    <br>
     <!-- {{}} -> data binding -->
-    <span>{{current.date | date:'fullDate'}}</span>
+    <div>{{current.date | date:'fullDate'}}</div>
     <!-- how to format data? use "|" pipe -->
   </div>
   <div>
     <img [src]='current.image' /> 
     <!-- [] -> property binding -->
-    <!-- src is a property of img in this case. how to property binding? [src]-->
-    <span>{{current.temperature}}</span>
+    <!-- src is a property of img in this case. -->
+    <div>{{(current.temperature - 273.15).toFixed(2)}} °C</div>  
+    <div>{{((current.temperature - 273.15) * 1.8 + 32).toFixed(2)}} °F
+    </div>
+
+    <!-- ((k - 273.15) * 1.8 + 32).toFixed(2); -->
   </div>
   <div>
     {{current.description}}
